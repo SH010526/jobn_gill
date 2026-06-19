@@ -1,0 +1,83 @@
+{
+  "result": {
+    "before": {
+      "ready": true,
+      "viewport": {
+        "width": 706,
+        "height": 754
+      },
+      "menuCount": 20,
+      "firstId": "americano",
+      "instruction": "원하는 음료를 선택해 주세요.",
+      "visibleMenuCards": 9,
+      "optionsFullyVisible": true,
+      "optionRect": {
+        "optionTop": 0,
+        "optionBottom": 0,
+        "footerTop": 628
+      },
+      "footerFullyVisible": true
+    },
+    "afterCategory": {
+      "clickedCoffee": true,
+      "active": "coffee",
+      "menuCount": 6,
+      "ids": [
+        "americano",
+        "espresso",
+        "einspanner",
+        "coldbrew",
+        "dolce-coldbrew",
+        "decaf-americano"
+      ]
+    },
+    "afterMenu": {
+      "clickedMenu": true,
+      "selected": "좁은길 아메리카노",
+      "checkoutDisabled": false,
+      "optionCount": 8,
+      "optionLabels": [
+        "온도",
+        "커피 농도",
+        "물 양"
+      ],
+      "optionsFullyVisible": true,
+      "optionButtonsInside": true
+    },
+    "afterOptions": {
+      "clickedDose": true,
+      "clickedPlus": true,
+      "options": "커피 농도 진하게 · 물 양 기본 · 2잔",
+      "qty": "2",
+      "total": "6,000원"
+    },
+    "afterScroll": {
+      "clickedAll": true,
+      "scrollWidth": 662,
+      "clientWidth": 662,
+      "scrollHeight": 1112,
+      "clientHeight": 120,
+      "scrollTop": 992,
+      "syntheticWheelScrollTop": 992,
+      "overflow": false,
+      "beforeWheelOffset": 0,
+      "afterWheelOffset": 0,
+      "dragMenuOffset": 0,
+      "transform": "translateY(-992px)",
+      "realWheelMenuOffset": 0,
+      "realWheelScrollTop": 992
+    },
+    "clickedGear": true,
+    "drawerOpen": true,
+    "clickedClose": true,
+    "drawerClosed": true,
+    "afterCheckout": {
+      "clickedCheckout": true,
+      "drawerOpen": true,
+      "hasLog": true
+    }
+  },
+  "consoleMessages": [
+    "%cElectron Security Warning (Insecure Content-Security-Policy) font-weight: bold; This renderer process has either no Content Security\n  Policy set or a policy with \"unsafe-eval\" enabled. This exposes users of\n  this app to unnecessary security risks.\n\nFor more information and help, consult\nhttps://electronjs.org/docs/tutorial/security.\nThis warning will not show up\nonce the app is packaged."
+  ]
+}

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>좁은길 (Narrow Path) Kiosk Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-brewing="false">
+    <main class="kiosk-shell">
+      <section class="kiosk-start-screen" id="kioskStartScreen">
+        <div class="start-content">
+          <div class="start-logo-wrapper">
+            <div class="start-logo-cup">☕</div>
+          </div>
+          <h1 class="start-brand-korean">좁은길</h1>
+          <h2 class="start-brand-english">NARROW PATH COFFEE</h2>
+          <p class="start-sub">정밀 로봇 바리스타가 전하는 특별한 한 잔</p>
+          <button type="button" class="btn-start-order" id="btnStartOrder" onclick="window.hideStartScreen && window.hideStartScreen()">
+            <span class="btn-start-title">주문하기</span>
+            <span class="btn-start-sub">TOUCH TO START</span>
+          </button>
+        </div>
+      </section>
+
+      <header class="top-nav-kiosk">
+        <div class="nav-container">
+          <div class="brand-wordmark">
+            <div class="brand-logo-cup">☕</div>
+            <div class="brand-text-wrapper">
+              <strong class="brand-korean">좁은길</strong>
+              <span class="brand-english">NARROW PATH COFFEE</span>
+            </div>
+          </div>
+          <div class="header-right">
+            <button type="button" class="admin-trigger" id="gearButton" aria-label="장비 설정">⚙</button>
+            <span id="connectionState" class="state-bad">미연결</span>
+            <span class="nav-clock" id="clockValue">--:--</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="order-instruction-banner">
+        <strong id="instructionMessage">원하는 음료를 선택해 주세요.</strong>
+      </section>
+
+      <section class="kiosk-main-body">
+        <section class="category-section" aria-label="음료 분류">
+          <div class="category-strip">
+            <button type="button" class="category-tab active" data-category="all"><span class="tab-label">전체</span></button>
+            <button type="button" class="category-tab" data-category="coffee"><span class="tab-label">커피</span></button>
+            <button type="button" class="category-tab" data-category="latte"><span class="tab-label">라떼 & 티</span></button>
+            <button type="button" class="category-tab" data-category="ade"><span class="tab-label">에이드</span></button>
+          </div>
+        </section>
+
+        <section class="menu-section" aria-label="음료 선택">
+          <div class="menu-grid" id="menuGrid">
+            <button type="button" class="menu-card" data-category="coffee" data-name="좁은길 아메리카노" data-desc="고소한 원두와 깔끔한 밸런스" data-price="2500" data-dose="15" data-yield="36" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=640&auto=format&fit=crop&q=80" alt="좁은길 아메리카노" /><span class="badge badge-hot">HOT</span></div>
+              <div class="card-details"><strong class="menu-title">좁은길 아메리카노</strong><span class="menu-price">2,500원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="coffee" data-name="딥 에스프레소" data-desc="짧은 잔에 담긴 진한 바디감" data-price="2000" data-dose="18" data-yield="30" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=640&auto=format&fit=crop&q=80" alt="딥 에스프레소" /><span class="badge badge-hot">HOT</span></div>
+              <div class="card-details"><strong class="menu-title">딥 에스프레소</strong><span class="menu-price">2,000원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="coffee" data-name="아인슈페너" data-desc="차가운 커피 위에 부드러운 크림" data-price="4500" data-dose="15" data-yield="45" data-temp="ICE">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=640&auto=format&fit=crop&q=80" alt="아인슈페너" /><span class="badge badge-ice">ICE</span><span class="badge badge-best">BEST</span></div>
+              <div class="card-details"><strong class="menu-title">아인슈페너</strong><span class="menu-price">4,500원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="latte" data-name="시그니처 카페라떼" data-desc="에스프레소와 우유의 부드러운 균형" data-price="3500" data-dose="16" data-yield="40" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=640&auto=format&fit=crop&q=80" alt="시그니처 카페라떼" /><span class="badge badge-hot">HOT</span><span class="badge badge-best">BEST</span></div>
+              <div class="card-details"><strong class="menu-title">시그니처 카페라떼</strong><span class="menu-price">3,500원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="latte" data-name="바닐라 빈 라떼" data-desc="바닐라 향을 더한 달콤한 라떼" data-price="4000" data-dose="16" data-yield="40" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=640&auto=format&fit=crop&q=80" alt="바닐라 빈 라떼" /><span class="badge badge-hot">HOT</span></div>
+              <div class="card-details"><strong class="menu-title">바닐라 빈 라떼</strong><span class="menu-price">4,000원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="latte" data-name="제주 말차라떼" data-desc="말차의 쌉싸름함과 우유의 밸런스" data-price="4200" data-dose="14" data-yield="42" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=640&auto=format&fit=crop&q=80" alt="제주 말차라떼" /><span class="badge badge-hot">HOT</span></div>
+              <div class="card-details"><strong class="menu-title">제주 말차라떼</strong><span class="menu-price">4,200원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="coffee" data-name="리얼 콜드브루" data-desc="천천히 추출한 깔끔한 차가운 커피" data-price="3800" data-dose="15" data-yield="45" data-temp="ICE">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=640&auto=format&fit=crop&q=80" alt="리얼 콜드브루" /><span class="badge badge-ice">ICE</span></div>
+              <div class="card-details"><strong class="menu-title">리얼 콜드브루</strong><span class="menu-price">3,800원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="latte" data-name="피치 블러썸 티" data-desc="복숭아 향이 은은한 티 메뉴" data-price="3500" data-dose="12" data-yield="45" data-temp="HOT">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=640&auto=format&fit=crop&q=80" alt="피치 블러썸 티" /><span class="badge badge-hot">HOT</span></div>
+              <div class="card-details"><strong class="menu-title">피치 블러썸 티</strong><span class="menu-price">3,500원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="ade" data-name="자몽 에이드" data-desc="자몽의 산뜻함과 탄산감" data-price="4000" data-dose="12" data-yield="45" data-temp="ICE">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=640&auto=format&fit=crop&q=80" alt="자몽 에이드" /><span class="badge badge-ice">ICE</span></div>
+              <div class="card-details"><strong class="menu-title">자몽 에이드</strong><span class="menu-price">4,000원</span></div>
+            </button>
+            <button type="button" class="menu-card" data-category="ade" data-name="레몬 에이드" data-desc="레몬의 청량함이 살아있는 에이드" data-price="4000" data-dose="12" data-yield="45" data-temp="ICE">
+              <div class="card-image-box"><img class="drink-img" src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=640&auto=format&fit=crop&q=80" alt="레몬 에이드" /><span class="badge badge-ice">ICE</span></div>
+              <div class="card-details"><strong class="menu-title">레몬 에이드</strong><span class="menu-price">4,000원</span></div>
+            </button>
+          </div>
+        </section>
+
+        <section class="customization-section" id="options-panel-target">
+          <div class="options-panel disabled" id="inlineOptionsPanel">
+            <div class="options-bg-blur" id="optionsBgBlur"></div>
+            <div class="options-placeholder" id="optionsPlaceholder">
+              <div class="placeholder-icon">☕</div>
+              <strong class="placeholder-title">음료를 먼저 선택해 주세요</strong>
+              <p class="placeholder-desc">선택한 음료 종류에 맞는 옵션이 이곳에 표시됩니다.</p>
+            </div>
+            <div class="options-active-content" id="optionsActiveContent" hidden>
+              <div class="options-header-solid">
+                <span class="opt-badge-gold" id="optionTypeBadge">COFFEE OPTION</span>
+                <strong class="opt-drink-name" id="inlineDrinkTitle">선택 없음</strong>
+                <span class="opt-drink-desc" id="inlineDrinkDesc">옵션을 선택해 주세요.</span>
+              </div>
+              <div class="cup-tabs-container" id="cupTabsContainer"></div>
+              <div class="options-grid-solid" id="optionGroups"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="kiosk-footer">
+        <div class="footer-summary-container">
+          <div class="footer-details-row">
+            <div class="summary-left-info">
+              <div class="summary-empty-state" id="summaryEmptyState">아직 선택한 음료가 없습니다.</div>
+              <div class="summary-active-state" id="summaryActiveState" hidden>
+                <div class="summary-drink-title-row">
+                  <span class="summary-temp-badge" id="summaryTempBadge">HOT</span>
+                  <strong class="summary-drink-name" id="summaryDrinkName">선택 없음</strong>
+                </div>
+                <p class="summary-drink-options" id="summaryDrinkOptions">옵션 없음</p>
+              </div>
+            </div>
+            <div class="summary-stepper-block">
+              <div class="kiosk-stepper-machine">
+                <button type="button" class="kiosk-stepper-btn" id="btnQtyMinus" disabled>-</button>
+                <strong class="kiosk-stepper-value" id="qtyVal">1</strong>
+                <button type="button" class="kiosk-stepper-btn" id="btnQtyPlus" disabled>+</button>
+              </div>
+            </div>
+            <div class="summary-price-block">
+              <span class="bill-lbl">결제 금액</span>
+              <strong class="bill-val-total" id="totalCartAmount">0원</strong>
+            </div>
+          </div>
+          <div class="footer-checkout-row" id="footerCheckoutRow">
+            <button type="button" class="btn-kiosk-checkout-primary" id="checkoutBtn" disabled>주문 전송</button>
+          </div>
+        </div>
+      </footer>
+
+      <section class="view-status-takeover" id="view-status" hidden>
+        <div class="brewing-takeover">
+          <div class="brewing-card">
+            <div class="cup-steam-animation">
+              <span class="steam-line steam-1"></span>
+              <span class="steam-line steam-2"></span>
+              <span class="steam-line steam-3"></span>
+              <div class="brewing-mug">☕</div>
+            </div>
+            <h2 class="brew-title" id="stageValue">대기</h2>
+            <p class="brew-subtitle" id="activeMessage">제조 대기 중입니다.</p>
+            <div class="brew-progress-wrapper">
+              <div class="progress-bar-rail"><div class="progress-bar-fill" id="stageProgress"></div></div>
+              <div class="progress-text-row"><span id="recipeState">대기</span><span class="progress-percentage" id="progressPercentText">0%</span></div>
+            </div>
+            <button type="button" class="status-action-button" id="statusActionButton" hidden>홈화면으로</button>
+            <div class="brewing-telemetry">
+              <div class="tel-card"><span class="tel-label">TEMP</span><strong class="tel-val" id="tempValue">0.0°C</strong></div>
+              <div class="tel-card"><span class="tel-label">PRESSURE</span><strong class="tel-val" id="pressureValue">0.00 bar</strong></div>
+              <div class="tel-card"><span class="tel-label">CUP</span><strong class="tel-val" id="cupValue">컵 없음</strong></div>
+            </div>
+            <div class="trend-chart-card-portrait">
+              <div class="sensor-chart-block">
+                <div class="chart-header-portrait">
+                  <span><i class="legend-dot temp"></i>온도</span>
+                  <strong id="tempChartValue">0.0°C</strong>
+                </div>
+                <div class="canvas-wrapper-portrait-mock"><canvas id="tempCanvas" width="720" height="108"></canvas></div>
+              </div>
+              <div class="sensor-chart-block">
+                <div class="chart-header-portrait">
+                  <span><i class="legend-dot pressure"></i>압력</span>
+                  <strong id="pressureChartValue">0.00 bar</strong>
+                </div>
+                <div class="canvas-wrapper-portrait-mock"><canvas id="pressureCanvas" width="720" height="108"></canvas></div>
+              </div>
+            </div>
+            <div class="stage-steps" id="stageSteps"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="payment-modal-overlay" id="paymentModalOverlay" hidden>
+        <div class="payment-modal-card">
+          <div class="payment-spinner"></div>
+          <h2 class="payment-modal-title">결제를 확인하고 있습니다</h2>
+          <p class="payment-modal-desc">결제가 완료되면 주문이 자동으로 전송됩니다.</p>
+          <div class="ic-reader-icon">💳</div>
+          <span class="amount-label">결제 금액</span>
+          <strong class="amount-val" id="paymentModalAmount">0원</strong>
+          <button type="button" class="payment-cancel-btn" id="btnCancelPayment">취소</button>
+        </div>
+      </div>
+
+      <div class="drawer-backdrop" id="drawerBackdrop"></div>
+      <aside class="admin-drawer" id="adminDrawer" aria-label="장비 관리자 패널">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">운영자</p>
+            <h2>장비 연결</h2>
+          </div>
+          <button type="button" class="button-secondary" id="closeDrawerButton">닫기</button>
+        </div>
+        <div class="drawer-body">
+          <label>포트<input id="portInput" list="portList" value="COM7" /><datalist id="portList"></datalist></label>
+          <label>속도<input id="baudInput" type="number" value="115200" min="9600" step="9600" /></label>
+          <div class="drawer-actions">
+            <button id="refreshPortsButton" class="button-secondary" type="button">조회</button>
+            <button id="connectButton" class="button-primary" type="button">연결</button>
+            <button id="disconnectButton" class="button-danger" type="button">해제</button>
+          </div>
+          <div class="drawer-actions">
+            <button id="cancelButton" class="button-secondary" type="button">현재 제조 정지</button>
+            <button id="clearQueueButton" class="button-secondary" type="button">대기열 비우기</button>
+          </div>
+          <div class="drawer-section">
+            <div class="drawer-title-row"><h3>대기열</h3><span id="queueCount">대기 0잔</span></div>
+            <ol id="queueList" class="queue-list"></ol>
+          </div>
+          <div class="drawer-section">
+            <h3>통신·에러 로그</h3>
+            <ul id="logList" class="log-list"></ul>
+          </div>
+        </div>
+      </aside>
+
+      <form id="orderForm" hidden>
+        <input id="cupsInput" type="number" value="1" />
+        <input id="doseInput" type="number" value="15.0" />
+        <input id="yieldInput" type="number" value="36.0" />
+        <select id="brewerInput"><option value="0" selected>0</option><option value="1">1</option></select>
+        <select id="grinderInput"><option value="0" selected>0</option><option value="1">1</option></select>
+      </form>
+      <div id="modeValue" hidden>대기</div>
+      <div id="selectedMenuName" hidden></div>
+      <div id="selectedRecipe" hidden></div>
+    </main>
+    <script>
+      window.hideStartScreen = function () {
+        const screen = document.getElementById('kioskStartScreen');
+        if (!screen) return;
+        screen.classList.add('fade-out');
+        setTimeout(() => {
+          screen.hidden = true;
+        }, 220);
+      };
+    </script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

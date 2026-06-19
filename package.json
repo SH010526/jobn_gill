@@ -1,0 +1,49 @@
+{
+  "name": "drink-machine-controller",
+  "version": "1.0.0",
+  "description": "Electron desktop app for controlling the drink machine simulator over Modbus RTU.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "package": "electron-builder --win portable"
+  },
+  "keywords": [
+    "electron",
+    "modbus",
+    "serial",
+    "coffee"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "serialport": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  },
+  "build": {
+    "appId": "com.challenge.drinkmachine",
+    "productName": "Drink Machine Controller",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  }
+}
